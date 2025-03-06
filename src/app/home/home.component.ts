@@ -25,7 +25,8 @@ export class HomeComponent implements OnInit {
   responsiveOptions: any[] | undefined;
   coachingClasses: any[] = [];
   items: MenuItem[] = [];
-  getDirectionURL: string = "https://www.google.com/maps/dir/?api=1&destination=10.79083635146072,%2078.75734337486288";
+  getDirectionURL: string =
+    'https://www.google.com/maps/dir/?api=1&destination=10.79083635146072,%2078.75734337486288';
   constructor(private messageService: MessageService) {}
   ngOnInit() {
     this.coachingClasses = [
@@ -87,7 +88,8 @@ export class HomeComponent implements OnInit {
         command: () => {
           window.open(
             'https://www.instagram.com/unitedsports_620019/',
-            '_blank'
+            '_blank',
+            'noopener,noreferrer'
           );
         },
       },
@@ -95,13 +97,17 @@ export class HomeComponent implements OnInit {
         icon: 'pi pi-phone phone-icon',
 
         command: () => {
-          window.location.href = 'tel:+9787492204';
+          window.location.href = 'tel:+91 9787492204';
         },
       },
       {
         icon: 'pi pi-whatsapp whatsapp-icon',
         command: () => {
-          window.open('https://wa.me/9787492204?text=Hi,%20Dev', '_blank');
+          window.open(
+            'https://wa.me/+919787492204?text=Hi%2C%20I%20checked%20out%20your%20website.%20Can%20you%20share%20more%20details%20about%20your%20turf%3F',
+            '_blank',
+            'noopener,noreferrer'
+          );
         },
       },
     ];
