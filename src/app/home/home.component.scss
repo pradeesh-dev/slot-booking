@@ -1,0 +1,42 @@
+:host ::ng-deep #book-now_btn {
+  .p-button {
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background-color: #fc0;
+    color: #000;
+    border: none;
+  }
+  .p-button-icon {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .p-button-label {
+    font-weight: 900;
+  }
+}
+
+#get-direction_btn {
+  text-decoration: none;
+}
+
+:host ::ng-deep .instagram-icon {
+  color: #ff0090;
+}
+
+:host ::ng-deep .whatsapp-icon {
+  color: #0af05f;
+}
+
+:host ::ng-deep .phone-icon {
+  color: #f37e00;
+}
+
+#book-slot_div {
+  background: 
+    radial-gradient(circle at 90% 90%, rgba(138,43,226,0.15), transparent 70%),
+    radial-gradient(circle at 10% 20%, rgba(138,43,226,0.1), transparent 70%),
+    #000;
+}
+
+
+

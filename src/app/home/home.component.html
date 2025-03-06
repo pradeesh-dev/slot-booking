@@ -1,0 +1,200 @@
+<div id="home-conatainer_div">
+  <!-- Title bar START -->
+  <div id="home-nav-bar_div" class="flex flex-column align-items-center bg-primary">
+    <h1 class="m-0">United Sports</h1>
+    <h5 class="m-0 mb-2 text-white"># Let's Play Trichy</h5>
+  </div>
+  <!-- Title bar -->
+
+  <!-- Body content END -->
+  <div id="home-body-conatainer_div" class="flex flex-column align-items-center gap-5">
+    <!-- Book now START -->
+    <div id="book-slot_div" class="flex flex-column align-items-center m-3 px-3 pb-4 border-round-2xl shadow-4">
+      <h2 class="text-3xl font-extrabold text-purple-600 mb-4 text-center">
+        Experience the Ultimate Turf Adventure!
+      </h2>
+      <p class="text-base text-gray-400 mb-2 text-center">
+        Step onto our state-of-the-art multipurpose turf, fully equipped with premium playing kits for cricket,
+        football, and volleyball.
+      </p>
+      <h6 class="text-lg font-semibold mb-5 text-center text-gray-300">
+        All for just <span class="text-primary font-bold">₹50</span> per head/hour.
+      </h6>
+      <p-button icon="pi pi-calendar-plus" label="Book Now" id="book-now_btn"></p-button>
+    </div>    
+
+    <!-- Book now END -->
+
+    <!-- Location START -->
+    <div id="location_div" class="flex flex-column align-items-center gap-3">
+      <p-fieldset legend="Location">
+        <p>
+          United Sports,<br />
+          2 nd cross, Amman Nagar Ext, <br />Kattur, Trichy- 620019.
+        </p>
+      </p-fieldset>
+      <a [href]=getDirectionURL target="_blank" rel="noopener noreferrer" class="p-button font-bold  border-none"
+        id="get-direction_btn">
+        Get Directions
+      </a>
+    </div>
+    <!-- Location END -->
+
+    <!-- <div class="map-wrapper">
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2150.5852377019846!2d78.7579970993374!3d10.792032838531444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf3e40b4b2ab3%3A0x638acaa48a7edaf7!2sUnited%20sports!5e1!3m2!1sen!2sin!4v1741203266149!5m2!1sen!2sin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div> -->
+
+
+    <!-- Slider START -->
+    <!-- <div id="home-content-slider_div" class="min-h-screen">
+      <p-carousel [value]="coachingClasses" [numVisible]="3" [numScroll]="3" [circular]="true"
+        [responsiveOptions]="responsiveOptions" autoplayInterval="4000">
+        <ng-template let-classdetails #item>
+          <p-card class="border-round-bottom-sm relative mx-auto">
+            <ng-template #header>
+              <img alt="Card" class="w-full border-round-2xl h-12rem" src="{{ classdetails.image_url }}" />
+            </ng-template>
+            <ng-template #title> {{ classdetails.title }}</ng-template>
+            <ng-template #subtitle>
+              {{ classdetails.subtitle }}
+            </ng-template>
+            <p class="">
+              {{ classdetails.description }}
+            </p>
+            <ng-template #footer>
+              <div class="flex gap-4 mt-1">
+                <p-button label="Contact" class="w-full" styleClass="w-full" />
+              </div>
+            </ng-template>
+          </p-card>
+        </ng-template>
+      </p-carousel>
+    </div> -->
+    <!-- Slider END -->
+
+  </div>
+  <!-- Body content -->
+</div>
+
+<p-speeddial [model]="items" [transitionDelay]="50" direction="left" type="semi-circle"
+  [style]="{ position: 'fixed', top: '35%', right: '2%' }" />
+<!-- 
+<div class="card flex justify-center">
+    <p-stepper [(value)]="activeStep" class="basis-[40rem]">
+        <p-step-list>
+            <p-step [value]="1" class="flex flex-row flex-auto gap-2">
+                <ng-template #content let-activateCallback="activateCallback" let-value="value">
+                    <button class="bg-transparent border-0 inline-flex flex-col gap-2" (click)="activateCallback()">
+                        <span
+                            class="rounded-full border-2 w-12 h-12 inline-flex items-center justify-center"
+                            [ngClass]="{
+                                'bg-primary text-primary-contrast border-primary': value <= activeStep,
+                                'border-surface': value > activeStep
+                            }"
+                        >
+                            <i class="pi pi-user"></i>
+                        </span>
+                    </button>
+                </ng-template>
+            </p-step>
+
+            <p-step [value]="2" class="flex flex-row flex-auto gap-2">
+                <ng-template #content let-activateCallback="activateCallback" let-value="value">
+                    <button class="bg-transparent border-0 inline-flex flex-col gap-2" (click)="activateCallback()">
+                        <span
+                            class="rounded-full border-2 w-12 h-12 inline-flex items-center justify-center"
+                            [ngClass]="{
+                                'bg-primary text-primary-contrast border-primary': value <= activeStep,
+                                'border-surface': value > activeStep
+                            }"
+                        >
+                            <i class="pi pi-star"></i>
+                        </span>
+                    </button>
+                </ng-template>
+            </p-step>
+
+            <p-step [value]="3" class="flex flex-row flex-auto gap-2">
+                <ng-template #content let-activateCallback="activateCallback" let-value="value">
+                    <button class="bg-transparent border-0 inline-flex flex-col gap-2" (click)="activateCallback()">
+                        <span
+                            class="rounded-full border-2 w-12 h-12 inline-flex items-center justify-center"
+                            [ngClass]="{
+                                'bg-primary text-primary-contrast border-primary': value <= activeStep,
+                                'border-surface': value > activeStep
+                            }"
+                        >
+                            <i class="pi pi-id-card"></i>
+                        </span>
+                    </button>
+                </ng-template>
+            </p-step>
+        </p-step-list>
+
+        <p-step-panels>
+            <p-step-panel [value]="1">
+                <ng-template #content let-activateCallback="activateCallback">
+                    <div class="flex flex-col gap-2 mx-auto" style="min-height: 16rem; max-width: 20rem">
+                        <div class="text-center mt-4 mb-4 text-xl font-semibold">Create your account</div>
+                        <div class="field">
+                            <input [(ngModel)]="name" pInputText id="input" type="text" placeholder="Name" fluid />
+                        </div>
+                        <div class="field">
+                            <input [(ngModel)]="email" pInputText id="email" type="email" placeholder="Email" fluid />
+                        </div>
+                        <div class="field">
+                            <p-password [(ngModel)]="password" placeholder="Password" fluid />
+                        </div>
+                    </div>
+                    <div class="flex pt-6 justify-end">
+                        <p-button (onClick)="activateCallback(2)" label="Next" icon="pi pi-arrow-right" iconPos="right" />
+                    </div>
+                </ng-template>
+            </p-step-panel>
+
+            <p-step-panel [value]="2">
+                <ng-template #content let-activateCallback="activateCallback">
+                    <div class="flex flex-col gap-2 mx-auto" style="min-height: 16rem; max-width: 24rem">
+                        <div class="text-center mt-4 mb-4 text-xl font-semibold">Choose your interests</div>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <p-togglebutton [(ngModel)]="option1" onLabel="Nature" offLabel="Nature" />
+                            <p-togglebutton [(ngModel)]="option2" onLabel="Art" offLabel="Art" />
+                            <p-togglebutton [(ngModel)]="option3" onLabel="Music" offLabel="Music" />
+                            <p-togglebutton [(ngModel)]="option4" onLabel="Design" offLabel="Design" />
+                            <p-togglebutton [(ngModel)]="option5" onLabel="Photography" offLabel="Photography" />
+                            <p-togglebutton [(ngModel)]="option6" onLabel="Movies" offLabel="Movies" />
+                            <p-togglebutton [(ngModel)]="option7" onLabel="Sports" offLabel="Sports" />
+                            <p-togglebutton [(ngModel)]="option8" onLabel="Gaming" offLabel="Gaming" />
+                            <p-togglebutton [(ngModel)]="option9" onLabel="Traveling" offLabel="Traveling" />
+                            <p-togglebutton [(ngModel)]="option10" onLabel="Dancing" offLabel="Dancing" />
+                        </div>
+                    </div>
+                    <div class="flex pt-6 justify-between">
+                        <p-button (onClick)="activateCallback(1)" label="Back" severity="secondary" icon="pi pi-arrow-left" />
+                        <p-button (onClick)="activateCallback(3)" label="Next" icon="pi pi-arrow-right" iconPos="right" />
+                    </div>
+                </ng-template>
+            </p-step-panel>
+
+            <p-step-panel [value]="3">
+                <ng-template #content let-activateCallback="activateCallback">
+                    <div class="flex flex-col gap-2 mx-auto" style="min-height: 16rem; max-width: 24rem">
+                        <div class="text-center mt-4 mb-4 text-xl font-semibold">Account created successfully</div>
+                        <div class="text-center">
+                            <img alt="logo" src="https://primefaces.org/cdn/primeng/images/stepper/content.svg" />
+                        </div>
+                    </div>
+                    <div class="flex pt-6 justify-start">
+                        <p-button (onClick)="activateCallback(2)" label="Back" severity="secondary" icon="pi pi-arrow-left" />
+                    </div>
+                </ng-template>
+            </p-step-panel>
+        </p-step-panels>
+    </p-stepper>
+</div> -->
