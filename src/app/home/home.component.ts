@@ -6,16 +6,26 @@ import { SpeedDial } from 'primeng/speeddial';
 import { ToastModule } from 'primeng/toast';
 import { MenuItem, MessageService } from 'primeng/api';
 import { FieldsetModule } from 'primeng/fieldset';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { DatePicker } from 'primeng/datepicker';
+import { FloatLabel } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-home',
   imports: [
     CardModule,
     ButtonModule,
-    Carousel,
     SpeedDial,
     ToastModule,
     FieldsetModule,
+    CommonModule,
+    DatePicker,
+    FormsModule,
+    FloatLabel,
+    InputTextModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -27,7 +37,16 @@ export class HomeComponent implements OnInit {
   items: MenuItem[] = [];
   getDirectionURL: string =
     'https://www.google.com/maps/dir/?api=1&destination=10.79083635146072,%2078.75734337486288';
-  constructor(private messageService: MessageService) {}
+
+  isBooking: boolean = false;
+  bookingDate: Date | undefined;
+  bookingMaxDate: Date | undefined;
+  bookingMinDate: Date | undefined;
+  bookingTime: any | undefined;
+  bookingHours: number = 1;
+
+  constructor(private messageService: MessageService, private router: Router) {}
+
   ngOnInit() {
     this.coachingClasses = [
       {
@@ -112,31 +131,46 @@ export class HomeComponent implements OnInit {
       },
     ];
   }
-  // activeStep: number = 1;
 
-  // name: string | undefined = 'rtes';
+  getBookinDetails() {
+    this.isBooking = true;
+    this.bookingDate = new Date();
+    this.bookingMaxDate = new Date();
+    this.bookingTime = '08:00';
+  }
 
-  // email: string | undefined = 'te';
+  bookSlot() {
+    if (
+      !this.isBooking ||
+      this.isEmpty(this.bookingDate) ||
+      this.isEmpty(this.bookingTime) ||
+      this.isEmpty(this.bookingHours)
+    ) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please fill all the required fields',
+        life: 3000,
+      });
+    } else {
+      let phoneNumber = '919787492204';
+      let message = `Hi, I want to book a slot on your turf.
 
-  // password: string | undefined = 'sd';
+Date: ${this.bookingDate?.toLocaleDateString()}
+Time: ${this.bookingTime}
+Duration: ${this.bookingHours} hour
 
-  // option1: boolean | undefined = false;
+Thanks.`;
 
-  // option2: boolean | undefined = false;
+      // Encode the message for a URL
+      let encodedMessage = encodeURIComponent(message);
+      let whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-  // option3: boolean | undefined = false;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    }
+  }
 
-  // option4: boolean | undefined = false;
-
-  // option5: boolean | undefined = false;
-
-  // option6: boolean | undefined = false;
-
-  // option7: boolean | undefined = false;
-
-  // option8: boolean | undefined = false;
-
-  // option9: boolean | undefined = false;
-
-  // option10: boolean | undefined = false;
+  isEmpty(value: any) {
+    return value === undefined || value === null || value === '';
+  }
 }

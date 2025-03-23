@@ -1,29 +1,116 @@
 <div id="home-conatainer_div">
+  <p-toast position="top-left" />
   <!-- Title bar START -->
-  <div id="home-nav-bar_div" class="flex flex-column align-items-center bg-primary">
+  <div
+    id="home-nav-bar_div"
+    class="flex flex-column align-items-center bg-primary"
+  >
     <h1 class="m-0">United Sports</h1>
     <h5 class="m-0 mb-2 text-white"># Let's Play Trichy</h5>
   </div>
   <!-- Title bar -->
 
   <!-- Body content END -->
-  <div id="home-body-conatainer_div" class="flex flex-column align-items-center gap-5">
+  <div id="home-body-conatainer_div" class="flex flex-column mx-3 gap-5 pb-5">
     <!-- Book now START -->
-    <div id="book-slot_div" class="flex flex-column align-items-center m-3 px-3 pb-4 border-round-2xl shadow-4">
-      <h2 class="text-3xl font-extrabold text-purple-600 mb-4 text-center">
-        Experience the Ultimate Turf Adventure!
-      </h2>
-      <p class="text-base text-gray-400 mb-2 text-center">
-        Step onto our state-of-the-art multipurpose turf, fully equipped with premium playing kits for cricket,
-        football, and volleyball.
-      </p>
-      <h6 class="text-lg font-semibold mb-5 text-center text-gray-300">
-        All for just <span class="text-primary font-bold">₹50</span> per head/hour.
-      </h6>
-      <p-button icon="pi pi-calendar-plus" label="Book Now" id="book-now_btn"></p-button>
-    </div>
+    <div class="booking_details_card">
+      <!-- Book now add START -->
+      <div
+        *ngIf="!isBooking"
+        id="book-slot_div"
+        class="flex flex-column align-items-center m-3 px-3 pb-4 border-round-2xl shadow-4"
+      >
+        <h2 class="text-3xl font-extrabold text-purple-600 text-center">
+          Experience the Ultimate Turf Adventure!
+        </h2>
+        <p class="text-sm text-gray-400 mt-0 mb-0 text-center">
+          Step onto our state-of-the-art multipurpose turf, fully equipped with
+          premium playing kits for cricket, football, and volleyball.
+        </p>
+        <h6 class="text-lg font-semibold mt-5 mb-3 text-center text-gray-300">
+          All for just <span class="text-primary font-bold">₹50</span> per
+          head/hour.
+        </h6>
 
-    <!-- Book now END -->
+        <p-button
+          icon="pi pi-calendar-plus"
+          label="Book Now"
+          id="book-now_btn"
+          (onClick)="getBookinDetails()"
+        ></p-button>
+      </div>
+      <!-- Book now add END -->
+
+      <!-- Book now module START -->
+      <div
+        *ngIf="isBooking"
+        id="book-slot_div"
+        class="flex flex-column align-items-center m-3 px-3 pb-4 border-round-2xl shadow-4 gap-4"
+      >
+        <h2 class="text-3xl font-extrabold text-purple-600 text-center mb-0">
+          Book Your Slot Instantly on WhatsApp!
+        </h2>
+        <!-- <sub class="text-center"
+          >Conveniently book your slot and receive real-time updates—all through
+          WhatsApp!</sub
+        > -->
+        <p class="text-xl font-bold text-primary text-center mt-0 mb-0">
+          Choose Your Preferred Date & Time
+        </p>
+        <div class="flex flex-column gap-5 max-w-18rem">
+          <p-floatlabel variant="on">
+            <p-datepicker
+              styleClass="w-full"
+              [(ngModel)]="bookingDate"
+              [showButtonBar]="true"
+              [iconDisplay]="'input'"
+              [minDate]="bookingMaxDate"
+              small
+              [maxDate]="bookingMinDate"
+              [showIcon]="true"
+              [showOnFocus]="false"
+              dateFormat="dd-MM-yy"
+            />
+            <label for="over_label">Date</label>
+          </p-floatlabel>
+
+          <div class="flex flex-row gap-3">
+            <p-floatlabel variant="on" class="w-8rem">
+              <input pInputText [(ngModel)]="bookingTime" class="w-full" />
+              <label for="over_label">Time</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="w-8rem">
+              <input pInputText [(ngModel)]="bookingHours" class="w-full" />
+              <label for="over_label">Hours</label>
+            </p-floatlabel>
+          </div>
+        </div>
+        <div class="flex flex-row gap-3">
+          <p-button
+            icon="pi pi-times"
+            size="small"
+            label="Later"
+            outlined="true"
+            styleClass="text-gray-300 border-gray-600"
+            (onClick)="isBooking = false"
+          ></p-button>
+
+          <p-button
+            icon="pi pi-whatsapp"
+            size="small"
+            label="Book Now"
+            outlined="false"
+            styleClass="border-1"
+            (onClick)="bookSlot()"
+          ></p-button>
+        </div>
+      </div>
+
+      <!-- Book now module END -->
+
+      <!-- Book now END -->
+    </div>
 
     <!-- Location START -->
     <div id="location_div" class="flex flex-column align-items-center gap-3">
@@ -33,8 +120,13 @@
           2 nd cross, Amman Nagar Ext, <br />Kattur, Trichy- 620019.
         </p>
       </p-fieldset>
-      <a [href]=getDirectionURL target="_blank" rel="noopener noreferrer" class="p-button font-bold  border-none"
-        id="get-direction_btn">
+      <a
+        [href]="getDirectionURL"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="p-button font-bold border-none"
+        id="get-direction_btn"
+      >
         Get Directions
       </a>
     </div>
@@ -50,40 +142,121 @@
       </div>
     </div> -->
 
-
     <!-- Slider START -->
-    <!-- <div id="home-content-slider_div" class="min-h-screen">
-      <p-carousel [value]="coachingClasses" [numVisible]="3" [numScroll]="3" [circular]="true"
-        [responsiveOptions]="responsiveOptions" autoplayInterval="4000">
+    <!-- <div id="home-content-slider_div">
+      <p-carousel
+        [value]="coachingClasses"
+        [circular]="true"
+        [responsiveOptions]="responsiveOptions"
+        autoplayInterval="4000"
+        styleClass="w-full"
+      >
         <ng-template let-classdetails #item>
-          <p-card class="border-round-bottom-sm relative mx-auto">
+          <p-card class="border-round-bottom-sm text-center">
             <ng-template #header>
-              <img alt="Card" class="w-full border-round-2xl h-12rem" src="{{ classdetails.image_url }}" />
+              <img
+                alt="Card"
+                class="border-round-2xl mt-3 w-full"
+                src="{{ classdetails.image_url }}"
+              />
             </ng-template>
-            <ng-template #title> {{ classdetails.title }}</ng-template>
+            <ng-template #title>{{ classdetails.title }}</ng-template>
             <ng-template #subtitle>
               {{ classdetails.subtitle }}
             </ng-template>
-            <p class="">
+            <p>
               {{ classdetails.description }}
             </p>
             <ng-template #footer>
-              <div class="flex gap-4 mt-1">
-                <p-button label="Contact" class="w-full" styleClass="w-full" />
+              <div class="flex justify-content-center">
+                <p-button label="Contact" />
               </div>
             </ng-template>
           </p-card>
         </ng-template>
       </p-carousel>
     </div> -->
+
     <!-- Slider END -->
 
+    <!-- Temp slider START -->
+    <div class="flex justify-content-center column-gap-7 row-gap-5 flex-wrap">
+      <p-card class="border-round-bottom-sm text-center w-23rem">
+        <ng-template #header>
+          <img
+            alt="Card"
+            class="border-round-2xl mt-3 w-full h-13rem"
+            [src]="coachingClasses[0].image_url"
+          />
+        </ng-template>
+        <ng-template #title> {{ coachingClasses[0].title }}</ng-template>
+        <ng-template #subtitle> {{ coachingClasses[0].subtitle }}</ng-template>
+        <p>
+          {{ coachingClasses[0].description }}
+        </p>
+        <ng-template #footer>
+          <div class="flex justify-content-center">
+            <p-button label="Contact" />
+          </div>
+        </ng-template>
+      </p-card>
+
+      <p-card class="border-round-bottom-sm text-center w-23rem">
+        <ng-template #header>
+          <img
+            alt="Card"
+            class="border-round-2xl mt-3 w-full h-13rem"
+            [src]="coachingClasses[1].image_url"
+          />
+        </ng-template>
+        <ng-template #title>{{ coachingClasses[1].title }}</ng-template>
+        <ng-template #subtitle> {{ coachingClasses[1].subtitle }} </ng-template>
+        <p>
+          {{ coachingClasses[1].description }}
+        </p>
+        <ng-template #footer>
+          <div class="flex justify-content-center">
+            <p-button label="Contact" />
+          </div>
+        </ng-template>
+      </p-card>
+
+      <p-card class="border-round-bottom-sm text-center w-23rem">
+        <ng-template #header>
+          <img
+            alt="Card"
+            class="border-round-2xl mt-3 w-full h-13rem"
+            [src]="coachingClasses[2].image_url"
+          />
+        </ng-template>
+        <ng-template #title> {{ coachingClasses[2].title }}</ng-template>
+        <ng-template #subtitle> {{ coachingClasses[2].subtitle }}</ng-template>
+        <p>
+          {{ coachingClasses[2].description }}
+        </p>
+        <ng-template #footer>
+          <div class="flex justify-content-center">
+            <p-button label="Contact" />
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+    <!-- Temp slider START -->
   </div>
+
   <!-- Body content -->
 </div>
 
-<p-speeddial [model]="items" showIcon="pi pi-send" hideIcon="pi pi-times" [transitionDelay]="50" direction="left" type="semi-circle"
-  [style]="{ position: 'fixed', top: '35%', right: '2%' }" />
+<p-speeddial
+  [model]="items"
+  showIcon="pi pi-send"
+  hideIcon="pi pi-times"
+  [transitionDelay]="50"
+  direction="left"
+  type="semi-circle"
+  [style]="{ position: 'fixed', top: '35%', right: '2%' }"
+/>
+
 <!-- 
 <div class="card flex justify-center">
     <p-stepper [(value)]="activeStep" class="basis-[40rem]">

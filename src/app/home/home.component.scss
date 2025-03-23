@@ -33,10 +33,12 @@
 
 #book-slot_div {
   background: 
-    radial-gradient(circle at 90% 90%, rgba(138,43,226,0.15), transparent 70%),
-    radial-gradient(circle at 10% 20%, rgba(138,43,226,0.1), transparent 70%),
+    radial-gradient(circle at 40% 100%, rgba(138,43,226,0.15), transparent 70%),
+    radial-gradient(circle at 90% 80%, rgba(138,43,226,0.1), transparent 70%),
     #000;
 }
 
-
+:host ::ng-deep .p-fieldset-legend{
+  background-color: var(--p-surface-600);
+}
 
