@@ -1,0 +1,80 @@
+<div class="book-now-container" id="book-now-section">
+  <p-toast position="top-center" />
+  
+  <div class="booking-content">
+    <div class="section-header">
+      <h2 class="section-title">Book Your Slot</h2>
+      <p class="section-subtitle">Reserve your time on our premium turf</p>
+    </div>
+
+    <!-- Initial booking prompt -->
+    <div *ngIf="!isBooking" class="booking-prompt">
+      <div class="prompt-card">
+        <h3 class="prompt-title">Ready to Play?</h3>
+        <p class="prompt-description">
+          Book your slot instantly and get ready for an amazing sports experience
+        </p>
+        <p-button
+          icon="pi pi-calendar-plus"
+          label="Start Booking"
+          class="start-booking-btn"
+          (onClick)="getBookingDetails()"
+        ></p-button>
+      </div>
+    </div>
+
+    <!-- Booking form -->
+    <div *ngIf="isBooking" class="booking-form">
+      <div class="form-card">
+        <h3 class="form-title">Book Your Slot Instantly on WhatsApp!</h3>
+        <p class="form-subtitle">Choose Your Preferred Date & Time</p>
+        
+        <div class="form-fields">
+          <p-floatlabel variant="on" class="date-field">
+            <p-datepicker
+              styleClass="w-full"
+              [(ngModel)]="bookingDate"
+              [showButtonBar]="true"
+              [iconDisplay]="'input'"
+              [minDate]="bookingMaxDate"
+              [maxDate]="bookingMinDate"
+              [showIcon]="true"
+              [showOnFocus]="false"
+              dateFormat="dd-MM-yy"
+            />
+            <label for="date_input">Date</label>
+          </p-floatlabel>
+
+          <div class="time-fields">
+            <p-floatlabel variant="on" class="time-field">
+              <input pInputText [(ngModel)]="bookingTime" class="w-full" />
+              <label for="time_input">Time</label>
+            </p-floatlabel>
+
+            <p-floatlabel variant="on" class="hours-field">
+              <input pInputText [(ngModel)]="bookingHours" class="w-full" type="number" min="1" max="8" />
+              <label for="hours_input">Hours</label>
+            </p-floatlabel>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <p-button
+            icon="pi pi-times"
+            label="Cancel"
+            outlined="true"
+            class="cancel-btn"
+            (onClick)="isBooking = false"
+          ></p-button>
+
+          <p-button
+            icon="pi pi-whatsapp"
+            label="Book on WhatsApp"
+            class="whatsapp-btn"
+            (onClick)="bookSlot()"
+          ></p-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

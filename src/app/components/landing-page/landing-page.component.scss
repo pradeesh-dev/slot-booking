@@ -1,0 +1,140 @@
+.landing-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: 
+    radial-gradient(circle at 40% 100%, rgba(138,43,226,0.15), transparent 70%),
+    radial-gradient(circle at 90% 80%, rgba(138,43,226,0.1), transparent 70%),
+    #000;
+  color: white;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.title-section {
+  margin-bottom: 3rem;
+}
+
+.main-title {
+  font-size: 4rem;
+  margin: 0;
+  background: linear-gradient(45deg, #fc0, #ff6b35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0 0;
+  color: #ccc;
+}
+
+.hero-description {
+  margin-bottom: 3rem;
+}
+
+.hero-headline {
+  font-size: 2.5rem;
+  color: #8a2be2;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.pricing-text {
+  font-size: 1.3rem;
+  color: #ddd;
+  margin: 0;
+}
+
+.price {
+  color: #fc0;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.cta-section {
+  margin-bottom: 2rem;
+}
+
+:host ::ng-deep .book-now-btn {
+  .p-button {
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background-color: #fc0;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+  
+  .p-button:hover {
+    background-color: #ffdd00;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 204, 0, 0.3);
+  }
+  
+  .p-button-icon {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+  
+  .p-button-label {
+    font-weight: 900;
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+.scroll-indicator i {
+  font-size: 2rem;
+  color: #fc0;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-headline {
+    font-size: 1.8rem;
+  }
+  
+  .hero-text {
+    font-size: 1rem;
+  }
+}

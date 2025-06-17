@@ -1,0 +1,74 @@
+<div class="contact-container" id="contact-section">
+  <div class="contact-content">
+    <div class="section-header">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-subtitle">Connect with us through your preferred platform</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card phone-card">
+        <div class="contact-icon">
+          <i class="pi pi-phone"></i>
+        </div>
+        <h3 class="contact-title">Call Us</h3>
+        <p class="contact-description">Speak directly with our team</p>
+        <a href="tel:+919787492204" class="contact-link">
+          +91 9787492204
+        </a>
+      </div>
+
+      <div class="contact-card whatsapp-card">
+        <div class="contact-icon">
+          <i class="pi pi-whatsapp"></i>
+        </div>
+        <h3 class="contact-title">WhatsApp</h3>
+        <p class="contact-description">Quick booking and inquiries</p>
+        <a 
+          href="https://wa.me/+919787492204?text=Hi%2C%20I%20checked%20out%20your%20website.%20Can%20you%20share%20more%20details%20about%20your%20turf%3F"
+          target="_blank"
+          rel="noopener,noreferrer"
+          class="contact-link"
+        >
+          Message Us
+        </a>
+      </div>
+
+      <div class="contact-card instagram-card">
+        <div class="contact-icon">
+          <i class="pi pi-instagram"></i>
+        </div>
+        <h3 class="contact-title">Instagram</h3>
+        <p class="contact-description">Follow our latest updates</p>
+        <a 
+          href="https://www.instagram.com/unitedsports_620019/"
+          target="_blank"
+          rel="noopener,noreferrer"
+          class="contact-link"
+        >
+          @unitedsports_620019
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <div class="info-card">
+        <h4 class="info-title">Operating Hours</h4>
+        <div class="info-details">
+          <p><strong>Monday - Sunday:</strong> 6:00 AM - 10:00 PM</p>
+          <p><strong>Booking:</strong> Available 24/7 via WhatsApp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Speed Dial -->
+  <p-speeddial
+    [model]="items"
+    showIcon="pi pi-send"
+    hideIcon="pi pi-times"
+    [transitionDelay]="50"
+    direction="up"
+    type="semi-circle"
+    class="floating-dial"
+  />
+</div>

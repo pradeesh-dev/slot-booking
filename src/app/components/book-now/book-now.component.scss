@@ -1,0 +1,184 @@
+.book-now-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.booking-content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.9);
+  margin: 0;
+}
+
+.booking-prompt {
+  display: flex;
+  justify-content: center;
+}
+
+.prompt-card {
+  background: rgba(255,255,255,0.95);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.prompt-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.prompt-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.booking-form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-card {
+  background: rgba(255,255,255,0.95);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.date-field {
+  width: 100%;
+}
+
+.time-fields {
+  display: flex;
+  gap: 1rem;
+}
+
+.time-field,
+.hours-field {
+  flex: 1;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+:host ::ng-deep .start-booking-btn {
+  .p-button {
+    background: linear-gradient(45deg, #fc0, #ff6b35);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+  
+  .p-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 204, 0, 0.4);
+  }
+}
+
+:host ::ng-deep .cancel-btn {
+  .p-button {
+    color: #666;
+    border-color: #ddd;
+  }
+}
+
+:host ::ng-deep .whatsapp-btn {
+  .p-button {
+    background: #25d366;
+    border-color: #25d366;
+    color: white;
+  }
+  
+  .p-button:hover {
+    background: #128c7e;
+    border-color: #128c7e;
+  }
+}
+
+:host ::ng-deep .p-datepicker {
+  .p-inputtext {
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 0.75rem;
+  }
+}
+
+:host ::ng-deep .p-inputtext {
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  padding: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .time-fields {
+    flex-direction: column;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .prompt-card,
+  .form-card {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,51 @@
+<div class="slides-container">
+  <div class="slides-content">
+    <div class="section-header">
+      <h2 class="section-title">Our Coaching Programs</h2>
+      <p class="section-subtitle">Professional training for all skill levels</p>
+    </div>
+
+    <div class="cards-grid">
+      <p-card 
+        *ngFor="let classDetail of coachingClasses" 
+        class="coaching-card"
+      >
+        <ng-template #header>
+          <div class="card-image-container">
+            <img
+              [alt]="classDetail.title"
+              class="card-image"
+              [src]="classDetail.image_url"
+            />
+            <div class="image-overlay">
+              <span class="timing-badge">{{ classDetail.timing }}</span>
+            </div>
+          </div>
+        </ng-template>
+        
+        <ng-template #title>
+          <h3 class="card-title">{{ classDetail.title }}</h3>
+        </ng-template>
+        
+        <ng-template #subtitle>
+          <p class="card-subtitle">{{ classDetail.subtitle }}</p>
+        </ng-template>
+        
+        <div class="card-content">
+          <p class="card-description">{{ classDetail.description }}</p>
+        </div>
+        
+        <ng-template #footer>
+          <div class="card-footer">
+            <p-button 
+              label="Contact Coach" 
+              icon="pi pi-phone"
+              class="contact-btn"
+              (onClick)="onContactClick()"
+            />
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
