@@ -3,138 +3,255 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  background: 
+    radial-gradient(circle at 25% 75%, rgba(108, 92, 231, 0.4), transparent 50%),
+    radial-gradient(circle at 75% 25%, rgba(162, 155, 254, 0.4), transparent 50%),
+    linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
   padding: 2rem;
   position: relative;
+  overflow: hidden;
+}
+
+.contact-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/><circle cx="10" cy="10" r="1"/><circle cx="50" cy="50" r="1"/></g></svg>') repeat;
+  animation: backgroundFloat 30s ease-in-out infinite;
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(-10px) translateY(-10px) rotate(90deg); }
+  50% { transform: translateX(10px) translateY(10px) rotate(180deg); }
+  75% { transform: translateX(-5px) translateY(5px) rotate(270deg); }
 }
 
 .contact-content {
   max-width: 1000px;
   width: 100%;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .section-header {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  animation: slideInDown 1s ease-out;
 }
 
 .section-title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: white;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  background: linear-gradient(45deg, #ffffff, #e8e4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5)); }
 }
 
 .section-subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: rgba(255,255,255,0.9);
   margin: 0;
+  animation: fadeIn 1s ease-out 0.3s both;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
 }
 
 .contact-card {
   background: rgba(255,255,255,0.95);
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  padding: 3rem 2rem;
+  border-radius: 25px;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.1),
+    0 0 0 1px rgba(255,255,255,0.2);
+  border: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.8s ease-out;
+  animation-fill-mode: both;
+}
+
+.contact-card:nth-child(1) { animation-delay: 0.2s; }
+.contact-card:nth-child(2) { animation-delay: 0.4s; }
+.contact-card:nth-child(3) { animation-delay: 0.6s; }
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(108, 92, 231, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.contact-card:hover::before {
+  left: 100%;
 }
 
 .contact-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 
+    0 30px 60px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(255,255,255,0.3);
 }
 
 .contact-icon {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 2rem;
+  margin: 0 auto 2rem;
+  font-size: 2.2rem;
   color: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .phone-card .contact-icon {
   background: linear-gradient(45deg, #f37e00, #ff9500);
+  box-shadow: 0 10px 30px rgba(243, 126, 0, 0.3);
 }
 
 .whatsapp-card .contact-icon {
   background: linear-gradient(45deg, #25d366, #128c7e);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
 }
 
 .instagram-card .contact-icon {
   background: linear-gradient(45deg, #e1306c, #fd1d1d, #fcb045);
+  box-shadow: 0 10px 30px rgba(225, 48, 108, 0.3);
 }
 
 .contact-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #333;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   font-weight: 600;
+  background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .contact-description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
+  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
 .contact-link {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+  background-size: 200% 200%;
   color: white;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 30px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+}
+
+.contact-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.contact-link:hover::before {
+  left: 100%;
 }
 
 .contact-link:hover {
   background: linear-gradient(45deg, #5f3dc4, #9775fa);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+  background-position: 100% 0;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(108, 92, 231, 0.4);
 }
 
 .contact-info {
   display: flex;
   justify-content: center;
+  animation: slideInUp 1s ease-out 0.8s both;
 }
 
 .info-card {
   background: rgba(255,255,255,0.95);
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  backdrop-filter: blur(10px);
-  max-width: 400px;
+  backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.1),
+    0 0 0 1px rgba(255,255,255,0.2);
+  max-width: 450px;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe);
 }
 
 .info-title {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-weight: 600;
+  background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .info-details p {
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
   color: #555;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .floating-dial {
@@ -142,19 +259,37 @@
   bottom: 2rem;
   right: 2rem;
   z-index: 1000;
+  animation: dialFloat 3s ease-in-out infinite;
+}
+
+@keyframes dialFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 :host ::ng-deep .floating-dial {
   .p-speeddial-button {
     background: linear-gradient(45deg, #fc0, #ff6b35);
+    background-size: 200% 200%;
     border: none;
-    width: 60px;
-    height: 60px;
-    box-shadow: 0 8px 25px rgba(255, 204, 0, 0.3);
+    width: 70px;
+    height: 70px;
+    box-shadow: 0 10px 30px rgba(255, 204, 0, 0.4);
+    transition: all 0.3s ease;
   }
   
   .p-speeddial-button:hover {
     background: linear-gradient(45deg, #ffdd00, #ff8c42);
+    background-position: 100% 0;
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 15px 40px rgba(255, 204, 0, 0.5);
+  }
+  
+  .p-speeddial-action {
+    transition: all 0.3s ease;
+  }
+  
+  .p-speeddial-action:hover {
     transform: scale(1.1);
   }
 }
@@ -171,14 +306,41 @@
   color: #f37e00;
 }
 
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 @media (max-width: 768px) {
   .section-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
   }
   
   .contact-container {
@@ -186,11 +348,18 @@
   }
   
   .contact-card {
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 2rem;
   }
   
   .floating-dial {
     bottom: 1rem;
     right: 1rem;
+  }
+  
+  :host ::ng-deep .floating-dial {
+    .p-speeddial-button {
+      width: 60px;
+      height: 60px;
+    }
   }
 }

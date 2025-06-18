@@ -2,24 +2,30 @@
 @import "../node_modules/primeicons/primeicons.css";
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-/* Apply Oswald for headings */
+/* Enhanced font system */
 h2,
 h3,
 h4,
 h5,
 h6 {
   font-family: "Poppins", sans-serif;
-  text-transform: uppercase; /* Optional: gives a strong sports feel */
+  text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 1px; /* Optional: slight spacing for impact */
+  letter-spacing: 1px;
+  line-height: 1.2;
 }
 
-/* Apply Inter for body text */
 body,
 p,
 span,
@@ -27,23 +33,245 @@ a,
 button {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  line-height: 1.6;
 }
 
-/* Make important stats or buttons bold */
 strong,
 .highlight {
   font-weight: 600;
-  color: #ff4500; /* Optional: Add a sporty color */
+  color: #ff4500;
 }
 
 h1 {
   font-family: "Teko", sans-serif;
-  text-transform: uppercase; /* Gives a sharp esports look */
+  text-transform: uppercase;
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-size: 2.5rem;
+  line-height: 1.1;
 }
 
 h5 {
   font-size: 0.8rem;
+}
+
+/* Global animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out;
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  background: linear-gradient(45deg, #fc0, #ff6b35);
+  border: none;
+  color: #000;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #ffdd00, #ff8c42);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.3);
+}
+
+/* Enhanced form controls */
+.form-control {
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: white;
+  transform: translateY(-1px);
+}
+
+/* Card enhancements */
+.card {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+  
+  body,
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #fc0;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+  }
+  
+  .card {
+    border: 2px solid #000;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Custom selection colors */
+::selection {
+  background: rgba(255, 204, 0, 0.3);
+  color: #000;
+}
+
+::-moz-selection {
+  background: rgba(255, 204, 0, 0.3);
+  color: #000;
+}
+
+/* Enhanced scrollbar for all browsers */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fc0 #1a1a1a;
+}
+
+/* Smooth scrolling for all elements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Modern backdrop filter support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Fallback for older browsers */
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur {
+    background: rgba(255, 255, 255, 0.9);
+  }
 }
