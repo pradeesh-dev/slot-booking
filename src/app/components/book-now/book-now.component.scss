@@ -1,0 +1,44 @@
+:root {
+  --primary: #0066ff;
+  --primary-light: #4d94ff;
+  --secondary: #00d4aa;
+  --accent: #ff6b6b;
+  --dark: #0a0a0a;
+  --dark-light: #1a1a1a;
+  --gray: #666;
+  --gray-light: #f8f9fa;
+  --white: #ffffff;
+  --border-radius: 16px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body, .book-now-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--dark);
+  background: var(--gray-light);
+}
+
+.book-now-container{
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 1rem;
+  background: var(--gray-light);
+}
+#book-slot_div {
+  background: 
+    radial-gradient(circle at 90% 100%, rgba(138,43,226,0.15), transparent 70%),
+    radial-gradient(circle at 90% 80%, rgba(138,43,226,0.1), transparent 70%),
+    #000;
+}
+
+:host ::ng-deep .p-fieldset-legend{
+  background-color: var(--p-surface-600);
+}

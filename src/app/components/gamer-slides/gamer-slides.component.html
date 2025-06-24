@@ -1,0 +1,24 @@
+<div class="gamer-slides-fullpage">
+  <div class="gamer-slides-center">
+    <p-carousel
+      [value]="games"
+      [numVisible]="1"
+      [numScroll]="1"
+      [circular]="true"
+      [responsiveOptions]="responsiveOptions"
+      autoplayInterval="3000"
+      class="gamer-carousel"
+    >
+      <ng-template let-game #item>
+        <div class="game-card-minimal">
+          <img [src]="game.image" [alt]="game.name" class="game-img-minimal" />
+          <div class="game-description-minimal">
+            <h3>{{ game.name }}</h3>
+            <p>{{ game.description }}</p>
+            <span class="game-price-minimal">₹{{ game.price }}</span>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<p-toast />
+<div class="book-now-container">
+  <div class="flex flex-column gap-2">
+    <span class="text-3xl font-bold text-purple-600 text-center">
+      Experience the Ultimate Turf Adventure!
+    </span>
+
+    <span class="text-sm text-gray-400 text-center">
+      Step onto our state-of-the-art multipurpose turf, fully equipped with
+      premium playing kits for cricket, football, and volleyball.
+    </span>
+
+    <span class="text-lg font-semibold text-center text-700">
+      All for just <span class="text-primary font-bold text-2xl">₹50</span> per
+      head/hour.
+    </span>
+  </div>
+
+  <div class="booking_details_card">
+    <!-- Book now module START -->
+    <div
+      id="book-slot_div"
+      class="flex flex-column align-items-center m-3 px-3 py-5 pb-4 border-round-2xl shadow-4 gap-3"
+    >
+      <span class="text-xl font-bold text-purple-600 text-center">
+        Book Your Slot Instantly on WhatsApp!
+      </span>
+      <!-- <sub class="text-center"
+          >Conveniently book your slot and receive real-time updates—all through
+          WhatsApp!</sub
+        > -->
+      <!-- <p class="text-xl font-bold text-primary text-center mt-0 mb-0">
+      Choose Your Preferred Date & Time
+    </p> -->
+      <div class="flex flex-column gap-3 max-w-18rem">
+        <div class="flex flex-column">
+          <label class="text-xs text-gray-500 pl-2 pb-2" for="">Date*</label>
+          <p-datepicker
+            styleClass="w-full"
+            [(ngModel)]="bookingDate"
+            (ngModelChange)="setTime()"
+            [showButtonBar]="true"
+            [minDate]="bookingMinDate"
+            [maxDate]="bookingMaxDate"
+            [showIcon]="true"
+            [showOnFocus]="false"
+            dateFormat="dd/mm/yy"
+            placeholder="Select a date"
+            [readonlyInput]="true"
+          />
+        </div>
+
+        <div class="flex flex-row gap-3">
+          <div class="flex flex-column">
+            <label class="text-xs text-gray-500 pl-2 pb-2" for="">Time*</label>
+
+            <p-datepicker
+              timeOnly="true"
+              styleClass="w-full"
+              [(ngModel)]="bookingTime"
+              [showButtonBar]="false"
+              [minDate]="bookingMinTime"
+              [maxDate]="bookingMaxTime"
+              [showIcon]="true"
+              [showOnFocus]="false"
+              dateFormat="hh:mm"
+              placeholder="Select a time"
+              [stepMinute]="15"
+              [icon]="'pi pi-clock'"
+            />
+          </div>
+
+          <div class="flex flex-column">
+            <label class="text-xs text-gray-500 pl-2 pb-2" for="">Hours*</label>
+            <input
+              pInputText
+              type="number"
+              [(ngModel)]="bookingHours"
+              class="w-full"
+              placeholder="Hours"
+              max="10"
+              min="1"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row gap-3 mt-3">
+        <!-- <p-button
+          icon="pi pi-times"
+          size="small"
+          label="Later"
+          outlined="true"
+          styleClass="text-gray-300 border-gray-600"
+          (onClick)="isBooking = false"
+        ></p-button> -->
+
+        <p-button
+          icon="pi pi-whatsapp"
+          size="small"
+          label="Book Now"
+          outlined="false"
+          (onClick)="bookSlot()"
+        ></p-button>
+      </div>
+    </div>
+
+    <!-- Book now module END -->
+
+    <!-- Book now END -->
+  </div>
+</div>
