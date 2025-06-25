@@ -1,44 +1,73 @@
-<div class="address-card">
-  <div class="address-header-row">
-    <div class="address-title">
-      <i class="pi pi-map-marker"></i>
-      <span>United Sports</span>
+<div class="address-container">
+  <div class="address-content">
+    <div class="section-header">
+      <h2 class="section-title">Find Us</h2>
+      <p class="section-subtitle">Visit our premium sports facility</p>
     </div>
-    <a
-      [href]="getDirectionURL"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="direction-btn"
-      id="get-direction_btn"
-    >
-      <i class="pi pi-directions"></i> Directions
-    </a>
-  </div>
-  <div class="address-info">
-    <div class="info-block">
-      <i class="pi pi-list info-icon"></i>
-      <div>
-        <div class="info-title">Booking Guidelines</div>
-        <ul class="info-list">
-          <li>Minimum 4 members required</li>
-          <li>₹50 per person per hour</li>
-          <li>Booking confirmed via WhatsApp</li>
-        </ul>
+
+    <div class="address-grid">
+      <div class="address-card">
+        <div class="address-icon">
+          <i class="pi pi-map-marker"></i>
+        </div>
+        <h3 class="address-title">Our Location</h3>
+        <div class="address-details">
+          <p class="address-line"><strong>United Sports</strong></p>
+          <p class="address-line">2nd Cross, Amman Nagar Ext,</p>
+          <p class="address-line">Kattur, Trichy - 620019</p>
+          <p class="address-line">Tamil Nadu, India</p>
+        </div>
+        <a
+          [href]="getDirectionURL"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="direction-btn"
+        >
+          <i class="pi pi-directions"></i>
+          Get Directions
+        </a>
+      </div>
+
+      <div class="map-card">
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2150.5852377019846!2d78.7579970993374!3d10.792032838531444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf3e40b4b2ab3%3A0x638acaa48a7edaf7!2sUnited%20sports!5e1!3m2!1sen!2sin!4v1741203266149!5m2!1sen!2sin"
+            allowfullscreen
+            loading="lazy"
+            class="map-iframe"
+          ></iframe>
+        </div>
       </div>
     </div>
-    <div class="info-block">
-      <i class="pi pi-clock info-icon"></i>
-      <div>
-        <div class="info-title">Operating Hours</div>
-        <div class="info-detail">5:00 AM - 10:00 PM</div>
-      </div>
-    </div>
-    <div class="info-block">
-      <i class="pi pi-map info-icon"></i>
-      <div>
-        <div class="info-title">Location</div>
-        <div class="info-detail">
-          2nd Cross, Amman Nagar Ext,<br />Kattur, Trichy-620019
+
+    <div class="facilities-info">
+      <div class="facilities-card">
+        <h4 class="facilities-title">What You'll Find Here</h4>
+        <div class="facilities-grid">
+          <div class="facility-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Premium Artificial Turf</span>
+          </div>
+          <div class="facility-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Floodlight Facility</span>
+          </div>
+          <div class="facility-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Equipment Rental</span>
+          </div>
+          <div class="facility-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Parking Available</span>
+          </div>
+          <div class="facility-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Changing Rooms</span>
+          </div>
+          <div class="facility-item">
+            <i class="pi pi-check-circle"></i>
+            <span>Refreshment Area</span>
+          </div>
         </div>
       </div>
     </div>
